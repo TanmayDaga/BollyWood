@@ -91,10 +91,12 @@ class MainWindow(object):
         # user to enter name to be cut
         self.nameToBeCutInputCustomScreen.setGeometry(QtCore.QRect(180, 60, 421, 41))
         self.nameToBeCutInputCustomScreen.setFont(self.standardFont)
+        self.nameToBeCutInputCustomScreen.setPlaceholderText('Name to be Cut')
         # user to enter name to be displayed
         self.nameToBeDisplayed = QtWidgets.QLineEdit(self.customInputScreen)
         self.nameToBeDisplayed.setGeometry(QtCore.QRect(180, 110, 421, 41))
         self.nameToBeDisplayed.setFont(self.standardFont)
+        self.nameToBeDisplayed.setPlaceholderText('Name to be Displayed')
         # submit button
         self.submitButtonCustomScreen = QtWidgets.QPushButton(self.customInputScreen)
         self.submitButtonCustomScreen.setGeometry(QtCore.QRect(590, 301, 131, 51))
