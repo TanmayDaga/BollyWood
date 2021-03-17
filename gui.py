@@ -152,9 +152,7 @@ class MainWindow(object):
                 img = QtGui.QPixmap('images/wrong.png').scaled(131, 111)
                 self.decisionImage.setPixmap(img)
                 self.cutName()
-    def onClickExitButtonCustomAndPlayScreen(self):
-        self.stackedWidget.setCurrentIndex(0)
-        self.mainWindow.setWindowTitle('BollyWood')
+
     def cutName(self):
         text = self.nameToBeCut.text()
         if len(text) != 0:
@@ -162,7 +160,10 @@ class MainWindow(object):
             return
         self.stackedWidget.setCurrentIndex(0)
 
-    # buttons clicked methods
+    def onClickExitButtonCustomAndPlayScreen(self):
+        self.stackedWidget.setCurrentIndex(0)
+        self.mainWindow.setWindowTitle('BollyWood')
+
     def onClickHomeScreenPlayButton(self):
         string_incomplete, string_complete = functions.string_parse(0, random_movie_name=True)
         counter = 0
