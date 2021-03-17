@@ -10,7 +10,7 @@ class MainWindow(object):
         # setting mainwindow
         self.mainWindow = mainwindow
         self.mainWindow.setObjectName('mainwindow')
-        self.mainWindow.resize(765, 377)
+        self.mainWindow.setFixedSize(765, 377)
         self.mainWindow.setWindowTitle('BollyWood')
         self.stringComplete = None
 
@@ -81,7 +81,7 @@ class MainWindow(object):
         self.exitButtonPlayScreen = QtWidgets.QPushButton('Exit', self.playScreen)
         self.exitButtonPlayScreen.setGeometry(QtCore.QRect(632, 291, 121, 61))
         self.exitButtonPlayScreen.setFont(self.standardFont)
-        self.exitButtonPlayScreen.clicked.connect(partial(self.stackedWidget.setCurrentIndex, 0))
+        self.exitButtonPlayScreen.clicked.connect(self.onClickExitButtonCustomAndPlayScreen)
         # adding to  playScreen stackWidget
         self.stackedWidget.addWidget(self.playScreen)
 
@@ -127,6 +127,7 @@ class MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(self.mainWindow)
 
     def setPlayScreen(self, nametobecut: str, listofwidget: list):
+        self.mainWindow.setWindowTitle('Play Screen')
         self.nameToBeCut.setText(nametobecut.upper())
         self.nameToBeCut.setFont(self.nameToBeCutFont)
         self.decisionImage.setPixmap(QtGui.QPixmap())
@@ -151,7 +152,9 @@ class MainWindow(object):
                 img = QtGui.QPixmap('images/wrong.png').scaled(131, 111)
                 self.decisionImage.setPixmap(img)
                 self.cutName()
-
+    def onClickExitButtonCustomAndPlayScreen(self):
+        self.stackedWidget.setCurrentIndex(0)
+        self.mainWindow.setWindowTitle('BollyWood')
     def cutName(self):
         text = self.nameToBeCut.text()
         if len(text) != 0:
@@ -177,6 +180,7 @@ class MainWindow(object):
         self.stackedWidget.setCurrentIndex(1)
 
     def onClickCustomButtonHomeScreen(self):
+        self.mainWindow.setWindowTitle('Custom Input')
         self.stackedWidget.setCurrentIndex(2)
 
     def onClickSubmitButtonCustomScreen(self):
